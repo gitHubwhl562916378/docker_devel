@@ -6,9 +6,7 @@
 # 使用方法
 
 >* 到release里面下载需要的cuda_10.2.1_linux.run(cuda10.2 blas的补丁包)到docker_devel目录
->* 将你开发需要的Video_Codec_SDK的头文件放到include, lib下面放Video_Codec_SDK要求的显卡驱动版本的  
-   libnvcuvid.so.*.*文件与libnvidia-encode.so.*.*文件。 目前这个是video-sdk 8的，显卡驱动为440.82的编解码部分  
-   如果没长升级video-sdk的需要，显卡驱动不一样时，换so到lib就可以了
+>* 将你开发需要的Video_Codec_SDK的头文件放到include, 目前这个是video-sdk 8的
 >* `git clone http://192.168.2.100:8888/new_osmagic/cpp/docker_devel.git`
 >* `cd docker_devel`
 >* `docker build -t test:1.0 .`
