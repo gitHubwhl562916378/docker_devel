@@ -47,6 +47,9 @@ RUN cd /tmp && \
     sh cuda_10.2.1_linux.run --silent && \
     rm cuda_10.2.1_linux.run
 
+#map nvidia driver so
+ENV NVIDIA_DRIVER_CAPABILITIES=video,compute,utility
+
 #install nvidia-video-sdk 映射的so没有libnvcuvid.so
 COPY Video_Codec_SDK/include/* /usr/local/cuda/include
 RUN cd /usr/lib/x86_64-linux-gnu && ln -s libnvcuvid.so.1 libnvcuvid.so \
@@ -165,9 +168,6 @@ ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bi
 
 #export cmake module path
 ENV CMAKE_MODULE_PATH=/usr/local/cpprest-sdk/lib/cpprestsdk:/usr/local/fmt/lib/cmake/fmt:/usr/local/jsoncpp-1.9.4/lib/cmake/jsoncpp:/usr/local/opencv-4.3.0/lib/cmake/opencv4:/usr/local/poco-1.10.1/lib/cmake/Poco:/usr/local/spdlog-1.4.0/lib/spdlog/cmake
-
-#map nvidia driver so
-ENV NVIDIA_DRIVER_CAPABILITIES=video,compute,utility
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
