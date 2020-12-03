@@ -47,8 +47,10 @@ RUN cd /tmp && \
     sh cuda_10.2.1_linux.run --silent && \
     rm cuda_10.2.1_linux.run
 
-#install nvidia-video-sdk
+#install nvidia-video-sdk 映射的so没有libnvcuvid.so
 COPY Video_Codec_SDK/include/* /usr/local/cuda/include
+RUN cd /usr/lib/x86_64-linux-gnu && ln -s libnvcuvid.so.1 libnvcuvid.so \
+                                 && ln -s libnvidia-encode.so.1 libnvidia-encode.so
 
 #install cpprestsdk
 RUN cd /tmp && \
