@@ -16,3 +16,4 @@
 >* 编译期间可能会因为网络问题，部分安装包失败，需要多尝试；或者可以将安装包先安装到基础镜像，Dockerfile中去掉该包再安装
 >* 适用于10系列或20系列的镜像制作。如果是更高系列的卡，需要将FFmpeg下configure中的computre, code_sm算力都调整为35;  
    opencv cmake编译参数去掉CUDA部分，3.4.5的版本没入加入cuda11的配置，自己加比较麻烦
+>* 出现`sudo: unable to resolve host 宿主机用户名`错误时，需要将/etc/hosts的127.0.0.1  localhost 改为　127.0.0.1  localhost　宿主机用户名
