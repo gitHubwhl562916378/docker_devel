@@ -48,10 +48,7 @@ RUN cd /tmp && \
     rm cuda_10.2.1_linux.run
 
 #install nvidia-video-sdk
-COPY Video_Codec_SDK/include/* /usr/local/cuda/include/
-COPY Video_Codec_SDK/lib/* /usr/lib/x86_64-linux-gnu/
-RUN cd /usr/lib/x86_64-linux-gnu && ln -s libnvcuvid.so.1 libnvcuvid.so \
-                                 && ln -s libnvidia-encode.so.1 libnvidia-encode.so
+COPY Video_Codec_SDK/include/* /usr/local/cuda/include
 
 #install cpprestsdk
 RUN cd /tmp && \
@@ -166,6 +163,9 @@ ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bi
 
 #export cmake module path
 ENV CMAKE_MODULE_PATH=/usr/local/cpprest-sdk/lib/cpprestsdk:/usr/local/fmt/lib/cmake/fmt:/usr/local/jsoncpp-1.9.4/lib/cmake/jsoncpp:/usr/local/opencv-4.3.0/lib/cmake/opencv4:/usr/local/poco-1.10.1/lib/cmake/Poco:/usr/local/spdlog-1.4.0/lib/spdlog/cmake
+
+#map nvidia driver so
+ENV NVIDIA_DRIVER_CAPABILITIES=video,compute,utility
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
