@@ -59,7 +59,7 @@ RUN cd /usr/lib/x86_64-linux-gnu && ln -s libnvcuvid.so.1 libnvcuvid.so \
 RUN cd /tmp && \
     git clone http://wanghualin:12345678@192.168.2.100:8888/KLAI/libcpprest.git && \
     cd libcpprest && mkdir build && cd build && \
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/cpprest-sdk -DBUILD_SAMPLES=OFF -DBUILD_TESTS=OFF && \
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/cpprestsdk -DBUILD_SAMPLES=OFF -DBUILD_TESTS=OFF && \
     make -j6 && make install && cd /tmp && rm libcpprest -r
 
 #install ffmpeg with nvidia-video-sdk
@@ -152,7 +152,7 @@ RUN cd /tmp && \
 
 #add LD_LIBRARY_PATH
 RUN cd /etc/ld.so.conf.d && \
-    echo "/usr/local/cpprest-sdk/lib" >> osmagic.conf && \
+    echo "/usr/local/cpprestsdk/lib" >> osmagic.conf && \
     echo "/usr/local/ffmpeg-4.3/lib" >> osmagic.conf && \
     echo "/usr/local/fmt/lib" >> osmagic.conf && \
     echo "/usr/local/jsoncpp-1.9.4/lib" >> osmagic.conf && \
@@ -167,7 +167,7 @@ ENV PKG_CONFIG_PATH=/usr/local/ffmpeg-4.3/lib/pkgconfig:/usr/local/fmt/lib/pkgco
 ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ffmpeg-4.3/bin
 
 #export cmake module path
-ENV CMAKE_MODULE_PATH=/usr/local/cpprest-sdk/lib/cpprestsdk:/usr/local/fmt/lib/cmake/fmt:/usr/local/jsoncpp-1.9.4/lib/cmake/jsoncpp:/usr/local/opencv-4.3.0/lib/cmake/opencv4:/usr/local/poco-1.10.1/lib/cmake/Poco:/usr/local/spdlog-1.4.0/lib/spdlog/cmake
+ENV CMAKE_MODULE_PATH=/usr/local/cpprestsdk/lib/cpprestsdk:/usr/local/fmt/lib/cmake/fmt:/usr/local/jsoncpp-1.9.4/lib/cmake/jsoncpp:/usr/local/opencv-4.3.0/lib/cmake/opencv4:/usr/local/poco-1.10.1/lib/cmake/Poco:/usr/local/spdlog-1.4.0/lib/spdlog/cmake
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
