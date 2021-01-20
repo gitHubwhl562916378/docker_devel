@@ -21,7 +21,7 @@ RUN if [ $(getent passwd $USERNAME) ]; then \
         # Otherwise ccreate the non-root user
         groupadd --gid $USER_GID $USERNAME \
         && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
-        # Add sudo support for the non-root user
+        # Add sudo support for the non-root user, anthor methord change password `echo "kl123" | passwd --stdin HwHiAiUser`
         && apt-get install -y sudo \
         && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
         && chmod 0440 /etc/sudoers.d/$USERNAME; \
