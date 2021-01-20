@@ -148,7 +148,7 @@ RUN cd /tmp && \
 
 #install other tar.gz files
 # COPY *.tar.gz /usr/local/
-# RUN cd /usr/local &&  for file in ls *.tar.gz ;do tar -xvf $file ;done && rm *.tar.gz
+# RUN cd /usr/local &&  for file in `ls *.tar.gz` ;do tar -xvf $file ;done && rm *.tar.gz
 
 #add LD_LIBRARY_PATH
 RUN cd /etc/ld.so.conf.d && \
